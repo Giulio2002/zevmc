@@ -2858,6 +2858,7 @@ const char* const* evmc_get_instruction_names_table(enum evmc_revision revision)
     switch (revision)
     {
     case EVMC_EXPERIMENTAL:
+    case EVMC_AMSTERDAM:
     case EVMC_OSAKA:
         return osaka_names;
     case EVMC_PRAGUE:

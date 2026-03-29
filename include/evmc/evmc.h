@@ -227,6 +227,7 @@ struct evmc_tx_context
     size_t blob_hashes_count;          /**< The number of blob hashes (EIP-4844). */
     const evmc_tx_initcode* initcodes; /**< The array of transaction initcodes (TXCREATE). */
     size_t initcodes_count;            /**< The number of transaction initcodes (TXCREATE). */
+    int64_t block_slot_number;         /**< The block slot number (EIP-7843). */
 };
 
 /**
@@ -1048,10 +1049,17 @@ enum evmc_revision
     EVMC_OSAKA = 14,
 
     /**
+     * The Amsterdam revision.
+     *
+     * https://notes.ethereum.org/@ethpandaops/bal-devnet-3
+     */
+    EVMC_AMSTERDAM = 15,
+
+    /**
      * The unspecified EVM revision used for EVM implementations to expose
      * experimental features.
      */
-    EVMC_EXPERIMENTAL = 15,
+    EVMC_EXPERIMENTAL = 16,
 
     /** The maximum EVM revision supported. */
     EVMC_MAX_REVISION = EVMC_EXPERIMENTAL,

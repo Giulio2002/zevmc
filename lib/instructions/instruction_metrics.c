@@ -3147,6 +3147,7 @@ const struct evmc_instruction_metrics* evmc_get_instruction_metrics_table(
     switch (revision)
     {
     case EVMC_EXPERIMENTAL:
+    case EVMC_AMSTERDAM:
     case EVMC_OSAKA:
         return osaka_metrics;
     case EVMC_PRAGUE:

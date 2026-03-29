@@ -121,6 +121,14 @@ struct evmc_message
     int64_t gas;
 
     /**
+     * The amount of state gas available to the message execution (EIP-8037).
+     *
+     * State gas is a separate gas dimension for state-creating operations.
+     * It draws from a reservoir allocated at transaction level.
+     */
+    int64_t state_gas;
+
+    /**
      * The recipient of the message.
      *
      * This is the address of the account which storage/balance/nonce is going to be modified
@@ -488,15 +496,16 @@ struct evmc_result
     evmc_address create_address;
 
     /**
+     * The amount of state gas left after execution (EIP-8037).
+     *
+     * Returned to the caller so it can restore its own state_gas tracking.
+     */
+    int64_t state_gas_left;
+
+    /**
      * Reserved data that MAY be used by a evmc_result object creator.
      *
-     * This reserved 4 bytes together with 20 bytes from create_address form
-     * 24 bytes of memory called "optional data" within evmc_result struct
-     * to be optionally used by the evmc_result object creator.
-     *
      * @see evmc_result_optional_data, evmc_get_optional_data().
-     *
-     * Also extends the size of the evmc_result to 64 bytes (full cache line).
      */
     uint8_t padding[4];
 };

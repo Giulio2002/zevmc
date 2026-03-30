@@ -503,11 +503,12 @@ struct evmc_result
     int64_t state_gas_left;
 
     /**
-     * Reserved data that MAY be used by a evmc_result object creator.
+     * The total state gas consumed during execution (EIP-8037).
      *
-     * @see evmc_result_optional_data, evmc_get_optional_data().
+     * Accumulated across all frames (EVM charge_state_gas + Host-level charges).
+     * Used for block gas accounting: block_gas = max(regular, state).
      */
-    uint8_t padding[4];
+    int64_t state_gas_used;
 };
 
 

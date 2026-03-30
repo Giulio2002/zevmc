@@ -356,6 +356,7 @@ public:
     using evmc_result::output_data;
     using evmc_result::output_size;
     using evmc_result::state_gas_left;
+    using evmc_result::state_gas_used;
     using evmc_result::status_code;
 
     /// Creates the result from the provided arguments.
